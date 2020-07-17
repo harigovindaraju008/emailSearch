@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.post("/search", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { email } = req.body;
   if (!email) {
     return res.status(400).send("please enter the email ");
@@ -43,6 +43,7 @@ app.post("/search", (req, res) => {
     // console.log(result.data);
     return res.status(200).send(result.data);
   }
-
-  runSample(options).catch(console.error);
+  runSample(options).catch(() =>
+    res.status(400).send("sever busy please try agin after some times")
+  );
 });

@@ -10,6 +10,7 @@ function App() {
 
   const search = (event) => {
     event.preventDefault();
+    setViewResult(false);
     setResults("");
     setmessage("Fetching information please wait");
     setfetching(true);
@@ -17,7 +18,7 @@ function App() {
       email,
     };
     axios
-      .post("/search", data)
+      .post("http://localhost:4001/search", data)
       .then(async (res) => {
         console.log(res.data);
         if (res.data.items) {
