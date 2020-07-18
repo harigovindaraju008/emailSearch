@@ -18,7 +18,7 @@ function App() {
       email,
     };
     axios
-      .post("http://localhost:4001/search", data)
+      .post("search", data)
       .then(async (res) => {
         console.log(res.data);
         if (res.data.items) {
